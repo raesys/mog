@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <form method="post" action="" autocomplete="on">
+        {% csrf_token %}
+        <h5 class="text-center">Create Your Account</h5>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                {{ user_form.first_name|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ user_form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ profile_form.phone_number|as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+                {{ user_form.email|as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+                {{ user_form.username|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ user_form.password1|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ user_form.password2|as_crispy_field }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}"><strong>login here</strong></a>!</p>
+</div>
+{% endblock %}

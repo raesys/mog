@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">All MOG</h1>
+        <p class="lead text-muted">Here is a list of all the Men Of God (MOG) currently available.</p>
+        <p>
+          <a href="#browse" class="btn btn-primary my-2">Browse through them</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+  <div class="row">
+  {% for obj in obj_list %}
+  <div class="col-sm-8 col-md-7 py-4">    
+    <div class="card" style="width: 18rem;">
+      <img src="{{ obj.photo.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ obj.title }} {{ obj.full_name }}</h5>
+        <p class="card-text">Tel: {{ obj.phone_number}}</p>
+      </div>
+      <div class="card-body">
+        <p>
+          <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ obj.id }}">MOG Bio</button>   
+          <a class="btn btn-outline-success" href="#">Make A Request</i></a>
+       </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+  </div>
+
+</main>
+
+
+{% endblock %}

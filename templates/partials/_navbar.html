@@ -3,17 +3,21 @@
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
       </a>
-
+      {% if user.is_authenticated %}
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 link-secondary">Dashboard</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Request MOG</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">View Requests</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Support</a></li>
       </ul>
-
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href = '{% url 'logout' %}';">Logout</button>
       </div>
+      {% else %}
+      <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href = '{% url 'login' %}';">Login</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href = '{% url 'register' %}';">Sign-up</button>
+      </div>
+      {% endif %}
     </header>
   </div>

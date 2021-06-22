@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from mog.models import Mog 
 
+
+# Homepage
+# @login_required
+def home(request):
+    return redirect('main:dashboard')
 
 
 # Dashboard
